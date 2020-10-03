@@ -16,7 +16,7 @@
     "systeminformation": "^4.26.9"
   },
   "devDependencies": {
-    "discord.js": "^12.3.1"
+    "eris": "^0.13.3"
   },
   "repository": {
     "type": "git",

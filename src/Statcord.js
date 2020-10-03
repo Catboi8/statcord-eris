@@ -10,11 +10,11 @@ class Statcord extends EventEmitter {
         const { key, client } = options;
         let { postCpuStatistics, postMemStatistics, postNetworkStatistics } = options;
         
-        // Check for discord.js
+        // Check for eris
         try {
-            this.discord = require("discord.js");
+            this.discord = require("eris");
         } catch(e) {
-            throw new Error("statcord.js needs discord.js to function");
+            throw new Error("statcord.js needs eris to function");
         }
 
         // Key error handling
@@ -23,7 +23,7 @@ class Statcord extends EventEmitter {
         if (!key.startsWith("statcord.com-")) throw new Error('"key" is not prefixed by "statcord.com-", please follow the key format');
         // Client error handling
         if (!client) throw new Error('"client" is missing or undefined');
-        if (!(client instanceof this.discord.Client)) throw new TypeError('"client" is not a discord.js client');
+        if (!(client instanceof this.discord.Client)) throw new TypeError('"client" is not a eris client');
         // Post arg error checking
         if (postCpuStatistics == null || postCpuStatistics == undefined) postCpuStatistics = true;
         if (typeof postCpuStatistics !== "boolean") throw new TypeError('"postCpuStatistics" is not of type boolean');
