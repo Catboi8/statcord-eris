@@ -10,11 +10,11 @@ class Statcord extends EventEmitter {
         const { key, client } = options;
         let { postCpuStatistics, postMemStatistics, postNetworkStatistics } = options;
         
-        // Check for discord.js
+        // Check for eris
         try {
-            this.discord = require("discord.js");
+            this.discord = require("eris");
         } catch(e) {
-            throw new Error("statcord.js needs discord.js to function");
+            throw new Error("statcord.js needs eris to function");
         }
 
         // Key error handling
@@ -23,7 +23,7 @@ class Statcord extends EventEmitter {
         if (!key.startsWith("statcord.com-")) throw new Error('"key" is not prefixed by "statcord.com-", please follow the key format');
         // Client error handling
         if (!client) throw new Error('"client" is missing or undefined');
-        if (!(client instanceof this.discord.Client)) throw new TypeError('"client" is not a discord.js client');
+        if (!(client instanceof this.discord.Client)) throw new TypeError('"client" is not a eris client');
         // Post arg error checking
         if (postCpuStatistics == null || postCpuStatistics == undefined) postCpuStatistics = true;
         if (typeof postCpuStatistics !== "boolean") throw new TypeError('"postCpuStatistics" is not of type boolean');
@@ -39,11 +39,13 @@ class Statcord extends EventEmitter {
         this.autoposting = false;
 
         // API config
-        this.baseApiUrl = "https://api.statcord.com/v3/stats";
+        this.baseApiUrl = "https://statcord.com/logan/stats";
         this.key = key;
         this.client = client;
 
         // General config
+        this.v11 = this.discord.version <= "12.0.0";
+        this.v12 = this.discord.version >= "12.0.0";
         this.activeUsers = [];
         this.commandsRun = 0;
         this.popularCommands = [];
@@ -86,8 +88,17 @@ class Statcord extends EventEmitter {
         }
 
         // counts
-        let guild_count = this.client.guilds.cache.size;
-        let user_count = this.client.guilds.cache.filter(guild => guild.available).reduce((prev, curr) => prev + curr.memberCount, 0);
+        let guild_count = 0;
+        let user_count = 0;
+
+        // V12 code
+        if (this.v12) {
+            guild_count = this.client.guilds.cache.size;
+            user_count = this.client.users.cache.size;
+        } else if (this.v11) { // V11 code
+            guild_count = this.client.guilds.size;
+            user_count = this.client.users.size;
+        }
 
         // Get and sort popular commands
         let popular = [];
@@ -100,6 +111,9 @@ class Statcord extends EventEmitter {
                 count: `${sortedPopular[i].count}`
             });
         }
+
+        // Limit popular to the 5 most popular
+        if (popular.length > 5) popular.length = 5;
 
         // Get system information
         let memactive = 0;
@@ -125,7 +139,7 @@ class Statcord extends EventEmitter {
                 const load = await si.currentLoad();
 
                 // Get current load
-                cpuload = Math.round(load.currentLoad);
+                cpuload = Math.round(load.currentload);
             }
         }
 

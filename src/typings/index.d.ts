@@ -1,6 +1,6 @@
 declare module "statcord.js" {
     // Import modules
-    import * as Discord from "discord.js";
+    import * as Discord from "eris";
     import { EventEmitter } from "events";
 
     // Create options
@@ -17,7 +17,7 @@ declare module "statcord.js" {
 
     // Sharding client options
     interface ShardingClientOptions extends BaseClientOptions {
-        manager: Discord.ShardingManager;
+        manager: Discord.ShardManager;
         autopost?: boolean;
     }
 
@@ -31,7 +31,7 @@ declare module "statcord.js" {
 
         private baseApiUrl: string;
         private key: string;
-        private manager: Discord.ShardingManager;
+        private manager: Discord.ShardManager;
 
         private v11: boolean;
         private v12: boolean;
@@ -59,14 +59,14 @@ declare module "statcord.js" {
     export class ShardingClient extends BaseClient {
         constructor(options: ShardingClientOptions);
 
-        private customFields: Map<1 | 2, (manager: Discord.ShardingManager) => Promise<string>>;
+        private customFields: Map<1 | 2, (manager: Discord.ShardManager) => Promise<string>>;
 
         public static post(client: Discord.Client): void;
         public static postCommand(command_name: string, author_id: string, client: Discord.Client): void; 
 
-        public post(): Promise<void>;
+        private post(): Promise<void>;
         private postCommand(command_name: string, author: string): Promise<void>;
-        public registerCustomFieldHandler(customFieldNumber: 1 | 2, handler: (manager: Discord.ShardingManager) => Promise<string>): Promise<null>;
+        public registerCustomFieldHandler(customFieldNumber: 1 | 2, handler: (manager: Discord.ShardManager) => Promise<string>): Promise<null>;
     }
 
     export class Client extends BaseClient {

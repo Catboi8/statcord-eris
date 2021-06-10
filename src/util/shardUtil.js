@@ -1,7 +1,7 @@
 // Post stats about a command
 module.exports.postCommand = (command_name, author_id, client) => {
     // Get discord for type checking
-    const Discord = require("discord.js");
+    const Discord = require("eris");
 
     // Command name error checking
     if (!command_name) throw new Error('"command_name" is missing or undefined');
@@ -11,7 +11,7 @@ module.exports.postCommand = (command_name, author_id, client) => {
     if (typeof author_id !== "string") throw new TypeError('"author_id" is not typeof string');
     // Client error checking
     if (!client) throw new Error('"client" is missing or undefined');
-    if (!(client instanceof Discord.Client)) throw new Error('"client" is not a discord.js client');
+    if (!(client instanceof Discord.Client)) throw new Error('"client" is not a eris client');
     if (!client.shard) throw new Error("This function is only for sharded clients");
     
     // Send message with args to Statcord Sharding Client
@@ -21,10 +21,10 @@ module.exports.postCommand = (command_name, author_id, client) => {
 // Post all current stats to statcord
 module.exports.post = (client) => {
     // Get discord for type checking
-    const Discord = require("discord.js");
+    const Discord = require("eris");
     // Client error checking
     if (!client) throw new Error('"client" is missing or undefined');
-    if (!(client instanceof Discord.Client)) throw new Error('"client" is not a discord.js client');
+    if (!(client instanceof Discord.Client)) throw new Error('"client" is not a eris client');
     if (!client.shard) throw new Error("This function is only for sharded clients");
     
     // Send message with args to Statcord Sharding Client

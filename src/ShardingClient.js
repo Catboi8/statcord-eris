@@ -24,11 +24,11 @@ class ShardingClient extends EventEmitter {
         const { key, manager } = options;
         let { postCpuStatistics, postMemStatistics, postNetworkStatistics, autopost } = options;
 
-        // Check for discord.js
+        // Check for eris
         try {
-            this.discord = require("discord.js");
+            this.discord = require("eris");
         } catch (e) {
-            throw new Error("statcord.js needs discord.js to function");
+            throw new Error("statcord.js needs eris to function");
         }
 
         // Key error handling
@@ -37,7 +37,7 @@ class ShardingClient extends EventEmitter {
         if (!key.startsWith("statcord.com-")) throw new Error('"key" is not prefixed by "statcord.com-", please follow the key format');
         // Manager error handling
         if (!manager) throw new Error('"manager" is missing or undefined');
-        if (!(manager instanceof this.discord.ShardingManager)) throw new TypeError('"manager" is not a discord.js sharding manager');
+        if (!(manager instanceof this.discord.ShardingManager)) throw new TypeError('"manager" is not a eris sharding manager');
         // Auto post arg checking
         if (!autopost == null || autopost == undefined) autopost = true;
         if (typeof autopost !== "boolean") throw new TypeError('"autopost" is not of type boolean');
@@ -53,11 +53,13 @@ class ShardingClient extends EventEmitter {
         this.autoposting = autopost;
 
         // API config
-        this.baseApiUrl = "https://api.statcord.com/v3/stats";
+        this.baseApiUrl = "https://statcord.com/logan/stats";
         this.key = key;
         this.manager = manager;
 
         // General config
+        this.v11 = this.discord.version <= "12.0.0";
+        this.v12 = this.discord.version >= "12.0.0";
         this.activeUsers = [];
         this.commandsRun = 0;
         this.popularCommands = [];
@@ -134,8 +136,17 @@ class ShardingClient extends EventEmitter {
         }
 
         // counts
-        let guild_count = await getGuildCountV12(this.manager);
-        let user_count = await getUserCountV12(this.manager);
+        let guild_count = 0;
+        let user_count = 0;
+
+        // V12 code
+        if (this.v12) {
+            guild_count = await getGuildCountV12(this.manager);
+            user_count = await getUserCountV12(this.manager);
+        } else if (this.v11) { // V11 code
+            guild_count = await getGuildCountV11(this.manager);
+            user_count = await getUserCountV11(this.manager);
+        }
 
         // Get and sort popular commands
         let popular = [];
@@ -365,5 +376,15 @@ async function getUserCountV12(manager) {
     return memberNum.reduce((prev, memberCount) => prev + memberCount, 0);
 }
 // end
+
+// v11 sharding gets
+async function getGuildCountV11(manager) {
+    return (await manager.fetchClientValues("guilds.size")).reduce((prev, current) => prev + current, 0);
+}
+
+async function getUserCountV11(manager) {
+    return (await manager.fetchClientValues("users.size")).reduce((prev, current) => prev + current, 0);
+}
+//end
 
 module.exports = ShardingClient;
