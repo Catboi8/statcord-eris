@@ -1,12 +1,14 @@
 {
-  "name": "statcord.js",
-  "version": "3.1.1",
+  "name": "statcord-eris",
+  "version": "1.0.0",
   "description": "Upload Statcord info to the official API!",
   "main": "src/index.js",
   "keywords": [
     "api",
     "discord-labs",
     "statcord.js",
+    "statcord-eris",
+    "eris",
     "bot-stats"
   ],
   "author": "statcord.com",
@@ -20,8 +22,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/labdiscord/statcord.js"
+    "url": "https://github.com/Catboi8/statcord-eris"
   },
-  "homepage": "https://github.com/labdiscord/statcord.js",
+  "homepage": "https://github.com/Catboi8/statcord-eris",
   "types": "./src/typings/index.d.ts"
 }

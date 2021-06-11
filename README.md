@@ -54,7 +54,7 @@ Register the function to get the values for posting
 
 Returns **([Error][17] | null)** 
 
-## ShardingClient
+## ShardingClient NOT FUNCTIONAL YET
 
 ### registerCustomFieldHandler
 
@@ -91,17 +91,17 @@ Asynchronous function
 
 #### Parameters
 
-- `client` **[Discord.js Client][25]** The client is passed to your function when getting the data
+- `client` **[Eris Client][25]** The client is passed to your function when getting the data
 
 Returns **(Promise<[string][18]>)**
 
-### Sharding Handler
+### Sharding Handler NOT FUNCTIONAL YET
 
 Asynchronous function
 
 #### Parameters
 
-- `manager` **[Discord.js ShardingManager][26]** The manager is passed to your function when getting the data
+- `manager` **[Eris ShardingManager][26]** The manager is passed to your function when getting the data
 
 Returns **(Promise<[string][18]>)**
 
@@ -125,7 +125,7 @@ status - **(false | [Error][17] | [string][18])**
 
 ```javascript
 const Statcord = require("statcord.js");
-const Discord = require("discord.js");
+const Discord = require("eris");
 
 const client = new Discord.Client();
 // Create statcord client
@@ -201,11 +201,11 @@ statcord.on("post", status => {
 client.login("TOKEN");
 ```
 
-## Sharding Usage
+## Sharding Usage NOT FUNCTIONAL YET
 
 #### **`sharder.js`**
 ```javascript
-    const Discord = require("discord.js");
+    const Discord = require("eris");
     const Statcord = require("statcord.js");
 
     const manager = new Discord.ShardingManager('./bot.js', { token: "TOKEN"});
@@ -256,7 +256,7 @@ client.login("TOKEN");
 
 #### **`bot.js`**
 ```javascript
-const Discord = require("discord.js");
+const Discord = require("eris");
 const Statcord = require("statcord.js");
 
 const client = new Discord.Client();
@@ -379,9 +379,9 @@ Not found what you need here?
 
 [24]: #sharding-handler
 
-[25]: https://discord.js.org/#/docs/main/stable/class/Client
+[25]: https://abal.moe/Eris/docs/Client
 
-[26]: https://discord.js.org/#/docs/main/stable/class/ShardingManager
+[26]: https://abal.moe/Eris/docs/Client
 
 [27]: #issues
 
