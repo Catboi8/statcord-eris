@@ -1,6 +1,6 @@
 {
   "name": "statcord-eris",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Upload Statcord info to the official API!",
   "main": "src/index.js",
   "keywords": [
