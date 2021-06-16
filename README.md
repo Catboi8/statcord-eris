@@ -124,8 +124,8 @@ status - **(false | [Error][17] | [string][18])**
 ## Normal Usage
 
 ```javascript
-const Statcord = require("statcord-eris");
 const Discord = require("eris");
+const Statcord = require("statcord-eris");
 
 const client = new Discord.Client();
 // Create statcord client
@@ -310,7 +310,7 @@ When you are ready, simply create a pull request for your contribution and we wi
 
 ### Donating
 
-You can also help me and the project out by sponsoring me through a [donation on PayPal](http://paypal.me/labdiscord).
+You can also help me and the project out by sponsoring me through a [donation on PayPal](https://paypal.me/elijahcjohnson).
 
 
 <!-- Discussion & Support -->
@@ -324,8 +324,8 @@ Not found what you need here?
 * If you have an issue, please create a GitHub issue here to report it, include as much detail as you can.
 * _Alternatively,_ You can join our Discord server to discuss any issue or to get support for the project.:
 
-<a href="http://statcord.com/discord" target="_blank">
-    <img src="https://discordapp.com/api/guilds/608711879858192479/embed.png" alt="Discord" height="30">
+<a href="https://support.ppgod.us/" target="_blank">
+    <img src="https://discordapp.com/api/guilds/774829038878326796/embed.png" alt="Discord" height="30">
 </a>
 
 

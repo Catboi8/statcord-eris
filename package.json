@@ -1,6 +1,6 @@
 {
   "name": "statcord-eris",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Upload Statcord info to the official API!",
   "main": "src/index.js",
   "keywords": [
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.0",
-    "systeminformation": "^4.26.9"
+    "systeminformation": "^5.7.7"
   },
   "devDependencies": {
     "eris": "^0.13.3"
