@@ -124,7 +124,7 @@ status - **(false | [Error][17] | [string][18])**
 ## Normal Usage
 
 ```javascript
-const Statcord = require("statcord.js");
+const Statcord = require("statcord-eris");
 const Discord = require("eris");
 
 const client = new Discord.Client();
@@ -206,7 +206,7 @@ client.login("TOKEN");
 #### **`sharder.js`**
 ```javascript
     const Discord = require("eris");
-    const Statcord = require("statcord.js");
+    const Statcord = require("statcord-eris");
 
     const manager = new Discord.ShardingManager('./bot.js', { token: "TOKEN"});
     // Create statcord sharding client
@@ -257,7 +257,7 @@ client.login("TOKEN");
 #### **`bot.js`**
 ```javascript
 const Discord = require("eris");
-const Statcord = require("statcord.js");
+const Statcord = require("statcord-eris");
 
 const client = new Discord.Client();
 /* There is no need to create a statcord client in the bot script,

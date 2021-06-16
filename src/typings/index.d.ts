@@ -1,4 +1,4 @@
-declare module "statcord.js" {
+declare module "statcord-eris" {
     // Import modules
     import * as Discord from "eris";
     import { EventEmitter } from "events";

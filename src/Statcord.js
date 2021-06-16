@@ -14,7 +14,7 @@ class Statcord extends EventEmitter {
         try {
             this.discord = require("eris");
         } catch(e) {
-            throw new Error("statcord.js needs eris to function");
+            throw new Error("statcord-eris needs eris to function");
         }
 
         // Key error handling
