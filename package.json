@@ -24,9 +24,6 @@
     "type": "git",
     "url": "https://github.com/Catboi8/statcord-eris"
   },
-  "scripts": {
-    "publish": "npm publish ./"
-  },
   "homepage": "https://github.com/Catboi8/statcord-eris",
   "types": "./src/typings/index.d.ts"
 }
