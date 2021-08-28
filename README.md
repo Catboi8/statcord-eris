@@ -54,8 +54,6 @@ Register the function to get the values for posting
 
 Returns **([Error][17] | null)** 
 
-## ShardingClient NOT FUNCTIONAL YET
-
 ### registerCustomFieldHandler
 
 Register the function to get the values for posting
@@ -127,7 +125,7 @@ status - **(false | [Error][17] | [string][18])**
 const Discord = require("eris");
 const Statcord = require("statcord-eris");
 
-const client = new Discord.Client();
+const client = new Discord.Client("TOKEN");
 // Create statcord client
 const statcord = new Statcord.Client({
     key: "statcord.com-APIKEY",
@@ -174,9 +172,9 @@ client.on("message", async (message) => {
     statcord.postCommand(command, message.author.id);
 
     if (command == "say") {
-        message.channel.send("say");
+        client.createMessage(message.channel.id, "say");
     } else if (command == "help") {
-        message.channel.send("help");
+        client.createMessage(message.channel.id, "help");
     } else if (command == "post") {
         // Only owner runs this command
         if (message.author.id !== "bot_owner_id") return;
@@ -198,107 +196,11 @@ statcord.on("post", status => {
     else console.error(status);
 });
 
-client.login("TOKEN");
+client.connect();
 ```
 
-## Sharding Usage NOT FUNCTIONAL YET
-
-#### **`sharder.js`**
-```javascript
-    const Discord = require("eris");
-    const Statcord = require("statcord-eris");
-
-    const manager = new Discord.ShardingManager('./bot.js', { token: "TOKEN"});
-    // Create statcord sharding client
-    const statcord = new Statcord.ShardingClient({
-        key: "statcord.com-APIKEY",
-        manager,
-        postCpuStatistics: false, /* Whether to post CPU statistics or not, defaults to true */
-        postMemStatistics: false, /* Whether to post memory statistics or not, defaults to true */
-        postNetworkStatistics: false, /* Whether to post network statistics or not, defaults to true */
-        autopost: false /* Whether to auto post or not, defaults to true */
-    });
-
-    /* Register custom fields handlers (these are optional, you are not required to use this function)
-    * These functions are automatically run when posting
-    */
-
-    // Handler for custom value 1
-    statcord.registerCustomFieldHandler(1, async (manager) => {
-        // Get and return your data as a string
-    });
-
-    // Handler for custom value 2
-    statcord.registerCustomFieldHandler(2, async (manager) => {
-        // Get and return your data as a string
-    });
-
-    // Spawn shards, statcord works with both auto and a set amount of shards
-    manager.spawn();
-
-    // Normal shardCreate event
-    manager.on("shardCreate", (shard) => {
-        console.log(`Spawned shard ${shard.id}`);
-    });
-
-    statcord.on("autopost-start", () => {
-        // Emitted when statcord autopost starts
-        console.log("Started autopost");
-    });
-
-    statcord.on("post", status => {
-        // status = false if the post was successful
-        // status = "Error message" or status = Error if there was an error
-        if (!status) console.log("successful post");
-        else console.error(status);
-    });
-```
-
-#### **`bot.js`**
-```javascript
-const Discord = require("eris");
-const Statcord = require("statcord-eris");
-
-const client = new Discord.Client();
-/* There is no need to create a statcord client in the bot script,
-because it has already been made in the sharding script
-*/
-
-// Client prefix
-const prefix = "cs!";
-
-client.on("ready", async () => {
-    console.log("ready");
-});
-
-client.on("message", async (message) => {
-    if (message.author.bot) return;
-    if (message.channel.type !== "text") return;
-
-    if (!message.content.startsWith(prefix)) return;
-
-    let command = message.content.split(" ")[0].toLowerCase().substr(prefix.length);
-
-    // Post command
-    Statcord.ShardingClient.postCommand(command, message.author.id, client);
-
-    if (command == "say") {
-        message.channel.send("say");
-    } else if (command == "help") {
-        message.channel.send("help");
-    } else if (command == "post") {
-        // Only owner runs this command
-        if (message.author.id !== "bot_owner_id") return;
-
-        // Example of manual posting
-        Statcord.ShardingClient.post(client);
-
-        // Errors on the sharding client will be sent to the console straight away
-    }
-});
-
-client.login("TOKEN");
-```
+## Sharding Usage
+Sharding usage (in Statcord-Eris) isn't available yet.
 
 
 ## Contributing
