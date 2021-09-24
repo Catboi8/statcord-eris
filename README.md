@@ -88,12 +88,6 @@ Returns **(Promise<[string][18]>)**
 ### Sharding Handler
 Sharding usage (in Statcord-Eris) isn't available yet.
 
-#### Parameters
-
-- `manager` **[Eris ShardingManager][26]** The manager is passed to your function when getting the data
-
-Returns **(Promise<[string][18]>)**
-
 # Events
 
 ## post event
@@ -193,7 +187,6 @@ client.connect();
 ## Sharding Usage
 Sharding usage (in Statcord-Eris) isn't available yet.
 
-
 ## Contributing
 
 Contributions are always welcome!\
@@ -218,7 +211,7 @@ Not found what you need here?
 * _Alternatively,_ You can join our Discord server to discuss any issue or to get support for the project.:
 
 <a href="https://support.ppgod.us/" target="_blank">
-    <img src="https://discordapp.com/api/guilds/774829038878326796/embed.png" alt="Discord" height="30">
+    <img src="https://discord.com/api/guilds/774829038878326796/widget.json" alt="Discord" height="30">
 </a>
 
 
