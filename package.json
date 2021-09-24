@@ -1,11 +1,12 @@
 {
   "name": "statcord-eris",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Upload Statcord info to the official API!",
   "main": "src/index.js",
   "keywords": [
     "api",
     "discord-labs",
+    "statcord",
     "statcord.js",
     "statcord-eris",
     "eris",

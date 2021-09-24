@@ -210,9 +210,12 @@ Not found what you need here?
 * If you have an issue, please create a GitHub issue here to report it, include as much detail as you can.
 * _Alternatively,_ You can join our Discord server to discuss any issue or to get support for the project.:
 
-<a href="https://support.ppgod.us/" target="_blank">
+<iframe src="https://discord.com/widget?id=774829038878326796&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
+<!-- ><a href="https://support.ppgod.us/" target="_blank">
     <img src="https://discord.com/api/guilds/774829038878326796/widget.json" alt="Discord" height="30">
 </a>
+< -->
 
 
 
