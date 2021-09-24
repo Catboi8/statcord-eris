@@ -85,9 +85,8 @@ Asynchronous function
 
 Returns **(Promise<[string][18]>)**
 
-### Sharding Handler NOT FUNCTIONAL YET
-
-Asynchronous function
+### Sharding Handler
+Sharding usage (in Statcord-Eris) isn't available yet.
 
 #### Parameters
 
