@@ -212,10 +212,10 @@ Not found what you need here?
 
 <iframe src="https://discord.com/widget?id=774829038878326796&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
-<!-- ><a href="https://support.ppgod.us/" target="_blank">
-    <img src="https://discord.com/api/guilds/774829038878326796/widget.json" alt="Discord" height="30">
+<a href="https://support.ppgod.us/" target="_blank">
+    <img src="https://discord.com/widget?id=774829038878326796&theme=dark" alt="Discord" width="350" height="500">
 </a>
-< -->
+
 
 
 
