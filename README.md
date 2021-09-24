@@ -9,16 +9,8 @@
         -   [Parameters][5]
     -   [registerCustomFieldHandler][6]
         -   [Parameters][7]
--   [ShardingClient][8]
-    -   [registerCustomFieldHandler][9]
-        -   [Parameters][10]
-    -   [postCommand][11]
-        -   [Parameters][12]
-    -   [post][13]
-        -   [Parameters][14]
 -   [Examples][19]
     -   [Normal Usage][20]
-    -   [Sharding Usage][21]
 
 ## Statcord
 
@@ -247,20 +239,6 @@ Not found what you need here?
 
 [7]: #parameters-1
 
-[8]: #shardingclient
-
-[9]: #registercustomfieldhandler-1
-
-[10]: #parameters-2
-
-[11]: #postcommand-1
-
-[12]: #parameters-3
-
-[13]: #post-1
-
-[14]: #parameters-4
-
 [15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 [16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
@@ -272,8 +250,6 @@ Not found what you need here?
 [19]: #examples
 
 [20]: #normal-usage
-
-[21]: #sharding-usage
 
 [22]: #handlers
 
